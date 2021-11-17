@@ -409,6 +409,7 @@
                                         AvatarGUID: $("#avatarGUID").val(),
                                         ImageData: getImageData('avatar')
                                     }
+                                    $("#dialog-waiting").dialog('open');
                                     if (connected) {
                                         webAPI_ChangeProfil(profilFromForm, () => { $("#dialog-profilForm").dialog("close"); updateUI(); }, AlertError);
                                     }
@@ -513,6 +514,7 @@
                             text: 'Ok',
                             click: function () {
                                 pausephotosListPeriodicRefresh = false;
+                                $("#dialog-waiting").dialog('open');
                                 webAPI_login($("#loginEmail").val(),
                                     $("#loginPassword").val(),
                                     () => {
