@@ -558,22 +558,26 @@
             });
         }
         function OpenConfirmLogout() {
-            $.confirm({
-                title: 'Déconnection...',
-                content: 'Voulez-vous vous déconnecter?',
-                buttons: {
-                    confirmer: function () {
-                        pausephotosListPeriodicRefresh = false;
-                        webAPI_logout(retrieveLoggedUser().Id, updateUI, AlertError);
-                    },
-                    annuler: {},
-                }
-            });
+            if (!operationOnGoing()) {
+                $.confirm({
+                    title: 'Déconnection...',
+                    content: 'Voulez-vous vous déconnecter?',
+                    buttons: {
+                        confirmer: function () {
+                            pausephotosListPeriodicRefresh = false;
+                            webAPI_logout(retrieveLoggedUser().Id, updateUI, AlertError);
+                        },
+                        annuler: {},
+                    }
+                });
+            }
         }
         function OpenLoginForm() {
-            $('#btn-OkLogin').addClass("btn btn-primary");
-            $('#btn-CancelLogin').addClass("btn btn-secondary");
-            $("#dialog-loginForm").dialog('open');
+            if (!operationOnGoing()) {
+                $('#btn-OkLogin').addClass("btn btn-primary");
+                $('#btn-CancelLogin').addClass("btn btn-secondary");
+                $("#dialog-loginForm").dialog('open');
+            }
         }
         function setUsername(username) {
             $("#username").html("<span id='link_OpenProfilDialog' style='color:blue;' tooltip='Modifier votre profil' class='clickable'>" + username + "</span>");
