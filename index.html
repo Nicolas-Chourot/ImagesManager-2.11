@@ -239,7 +239,7 @@
 
         function installPeriodicphotosListRefresh() {
             setInterval(() => {
-                if (!pausephotosListPeriodicRefresh) getphotos();
+                if (!pausephotosListPeriodicRefresh & connected) getphotos();
             }, periodicRefreshPeriod * 1000);
         }
         function initphotosListColumnsLayout() {
