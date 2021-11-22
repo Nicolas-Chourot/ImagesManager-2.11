@@ -878,7 +878,8 @@
         }
         function thumbNail(photo, loggedUserId) {
 
-            let thumbnailContainer = $("<div class='thumbnailContainer' title=\"" + photo.Description + "\"></div>");
+            let thumbnailContainer = $("<div class='thumbnailContainer'></div>");
+            thumbnailContainer.attr("title", photo.Description);            
             let thumbnailHeader = $("<div class='thumbnailHeader ellipsis'></div>");
 
 
